@@ -1,6 +1,9 @@
+
 Feature: Total Number Page -
   Background:
     Given The app is running
+    When I login with email {'vicky@test.com'} and password {'000000'}
+    Then I goto 'TotalNumber' page
 
   Scenario: Forward icon works well
     # Given The app is running

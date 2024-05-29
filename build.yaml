@@ -1,3 +1,5 @@
+# the feature file should locate in the root path of "integration_test" folder
+
 targets:
   $default:
     sources:

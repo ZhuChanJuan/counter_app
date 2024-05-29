@@ -8,4 +8,5 @@ Future<void> iTapIcon(
 ) async {
   await tester.tap(find.byIcon(icon));
   await tester.pump();
+  await tester.pumpAndSettle();
 }
