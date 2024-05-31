@@ -22,50 +22,67 @@ void main() {
     tearDownAll(() async {
       await driver.close();
     });
-    testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-      // Build our app and trigger a frame.
+//     testWidgets('Counter increments smoke test', (WidgetTester tester) async {
+//       // Build our app and trigger a frame.
+//       await tester.pumpWidget(const MyApp());
+
+//       // Verify that our counter starts at 0.
+//       expect(find.text('0'), findsOneWidget);
+//       expect(find.text('1'), findsNothing);
+
+// //     // Create a SemanticsHandle variable
+// //     late SemanticsHandle handle;
+
+// // // Wrap the remaining test code in a try-finally block
+// //     try {
+//       // Tap the '+' icon and trigger a frame.
+//       await tester.tap(find.byIcon(Icons.add));
+//       await tester.pump();
+
+//       // Verify that our counter has incremented.
+//       expect(find.text('0'), findsNothing);
+//       expect(find.text('1'), findsOneWidget);
+
+//       // Assign the SemanticsHandle
+//       //   handle = tester.ensureSemantics();
+//       // } finally {
+//       //   // Dispose the SemanticsHandle at the end of the test
+//       //   handle.dispose();
+//       // }
+//     });
+
+    testWidgets('Forward to homepage test', (tester) async {
       await tester.pumpWidget(const MyApp());
+      // await iLoginWithEmailAndPassword(tester, 'vicky@test.com', '000000');
+      final nameFinder = find.byKey(const Key('LoginUserName'));
+      final pwdFinder = find.byKey(const Key('LoginPwd'));
+      final btnFinder = find.byKey(const Key('LoginBtn'));
+      expect(nameFinder, findsOneWidget);
+      expect(pwdFinder, findsOneWidget);
+      expect(btnFinder, findsOneWidget);
 
-      // Verify that our counter starts at 0.
-      expect(find.text('0'), findsOneWidget);
-      expect(find.text('1'), findsNothing);
+      await tester.enterText(nameFinder, 'vicky@test.com');
+      await tester.enterText(pwdFinder, '000000');
+      await tester.tap(btnFinder);
+      await tester.pumpAndSettle();
 
-//     // Create a SemanticsHandle variable
-//     late SemanticsHandle handle;
+      // verify we could find the forward icon
+      final fwdIcon = find.byKey(const Key('ForwardToTotalNumberScreen'));
+      expect(fwdIcon, findsOneWidget);
 
-// // Wrap the remaining test code in a try-finally block
-//     try {
-      // Tap the '+' icon and trigger a frame.
-      await tester.tap(find.byIcon(Icons.add));
+      // await iTapIcon(tester, Icons.arrow_forward);
+      await tester.tap(find.byIcon(Icons.arrow_forward));
       await tester.pump();
+      await tester.pumpAndSettle();
 
-      // Verify that our counter has incremented.
-      expect(find.text('0'), findsNothing);
-      expect(find.text('1'), findsOneWidget);
+      final appBarFinder = find.text('Total Number');
+      expect(appBarFinder, findsNothing);
 
-      // Assign the SemanticsHandle
-      //   handle = tester.ensureSemantics();
-      // } finally {
-      //   // Dispose the SemanticsHandle at the end of the test
-      //   handle.dispose();
-      // }
+      await tester.tap(fwdIcon);
+      await tester.pumpAndSettle();
+
+      expect(appBarFinder, findsOneWidget);
     });
-
-    // testWidgets('Forward to homepage test', (tester) async {
-    //   await tester.pumpWidget(const MyApp());
-
-    //   // verify we could find the forward icon
-    //   final fwdIcon = find.byKey(const Key('ForwardToTotalNumberScreen'));
-    //   expect(fwdIcon, findsOneWidget);
-
-    //   final appBarFinder = find.text('Total Number');
-    //   expect(appBarFinder, findsNothing);
-
-    //   await tester.tap(fwdIcon);
-    //   await tester.pumpAndSettle();
-
-    //   expect(appBarFinder, findsOneWidget);
-    // });
 
     // test('added case for edge browser', () async {
     //   final driver = await createDriver(

@@ -10,8 +10,7 @@ import 'package:counter_app/screens/number_display.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-// import 'package:counter_app/main.dart';
-// import 'package:webdriver/async_io.dart';
+// this file could run successfully with command : flutter test test/widget_test.dart
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
