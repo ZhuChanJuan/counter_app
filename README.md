@@ -196,3 +196,75 @@ file:///Users/vickyzhu/FlutterProjects/counter_app/build/native_assets/macos/nat
 [   +1 ms] Running 1 shutdown hook
 [   +2 ms] Shutdown hooks complete
 [ +262 ms] exiting with code 0
+
+
+## ChromeDriver issue to solve
+
+i encountered one issue which cause crash issue like this :
+
+![1718938067147](image/README/1718938067147.png)
+
+my solution to share :
+
+1. update the local chromedriver version by command : npx @puppeteer/browsers install chromedriver@stable
+2. then add the new version chromedriver path to your ~/.bash_profile
+3. activate the path : source ~/.bash_profile
+4. check the chromedriver version : chromedriver -v (if the new version can't be displayed, that should be terminal cache, so reopen terminal and check the version )
+
+
+
+## **Git clone failed**
+
+**Flutter git url : **[**https://github.com/flutter/flutter/tree/master**](https://github.com/flutter/flutter/tree/master)
+
+Git repo_URI : [https://github.com/flutter/flutter.git](https://github.com/flutter/flutter.git)
+
+First, turn off compression:
+
+**git config --global core.compression 0**
+
+Next, let's do a partial clone to truncate the amount of info coming down:
+
+**git clone --depth 1 <repo_URI>**
+
+When that works, go into the new directory and retrieve the rest of the clone:
+
+**git fetch --unshallow** ****
+
+or, alternately,
+
+git fetch --depth=2147483647
+
+Now, do a regular pull:
+
+**git pull --all**
+
+I think there is a glitch with msysgit in the 1.8.x versions that exacerbates these symptoms, so another option is to try with an earlier version of git (<= 1.8.3, I think).
+
+**Steps to solve the credential issues :**
+
+Install gh firstly : **brew install gh**
+
+Config personal token here [https://github.com/settings/tokens](https://github.com/settings/tokens)
+
+**      **and save it into local txt file like : mygittoken.txt
+
+Run command to login with token : **gh auth login —with-token < ~/mygittoken.txt**
+
+Config credential type as store : **git config --global credential.helper store**
+
+**	**If you already has other type of credential , use this command to make them empty firstly : **git config --global --unset-all credential.helper**
+
+**        **If the unset can’t work, use this command to check all gitconfig settings : **git config -l --show-origin, **then remove those credential settings manually** **
+
+Setup git : **gh auth setup-git ** **** ** **
+
+View current git config : **git config -l**
+
+View git auth status : **gh auth status** **                             **
+
+Clone code : **git clone https://github.com/pru-gtpt/engagement.git**
+
+![1718938125148](image/README/1718938125148.png)
+
+![1718938133507](image/README/1718938133507.png)

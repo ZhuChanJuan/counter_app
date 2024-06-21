@@ -6,6 +6,7 @@ Feature: Random Dice Page -
     Then I goto 'TotalNumber' page
     Then I goto 'PlayDice' page
 
+  @tag1
   Scenario: Default picture and text display normally
     Then I see {'Play Dice'} text
     Then I see {Icons.play_arrow} icon

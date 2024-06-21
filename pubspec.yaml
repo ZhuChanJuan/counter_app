@@ -40,9 +40,14 @@ dependencies:
   # gherkin: ^2.0.8
   glob: ^2.1.2
   golden_toolkit: ^0.15.0
+  flutter_screenutil: ^5.9.3
+  test_core: ^0.6.0
+  recase: ^4.1.0
 
 dev_dependencies:
   flutter_test:
+    sdk: flutter
+  integration_test:
     sdk: flutter
   build_runner:
   bdd_widget_test: ^1.7.3
@@ -55,9 +60,8 @@ dev_dependencies:
   flutter_lints: ^3.0.0
   flutter_driver:
     sdk: flutter
-  integration_test:
-    sdk: flutter
   test: any
+  test_api: ^0.7.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

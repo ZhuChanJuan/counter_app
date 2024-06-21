@@ -4,6 +4,11 @@
 script_dir=$(dirname "$0")
 echo ">>> current path : '$script_dir'"
 
+cd ..
+dart run build_runner build --delete-conflicting-outputs
+
+cd integration_test
+
 # Check if the test file parameter is provided
 if [ $# -eq 0 ]; then
   echo "Error: Test file parameter not provided."
@@ -23,4 +28,5 @@ fi
 # cd integration_test || exit 1
 
 # Execute the flutter drive command
-flutter drive --driver=integration_test/integration_driver.dart -t integration_test/"$test_file" -d chrome
+# flutter drive --driver=integration_test/integration_driver.dart -t integration_test/"$test_file" -d chrome
+flutter drive --driver=test_driver/integration_test.dart -t integration_test/"$test_file" -d chrome

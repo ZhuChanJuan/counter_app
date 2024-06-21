@@ -26,6 +26,6 @@ void main() {
       await bddSetUp(tester);
       await iSeeText(tester, 'Play Dice');
       await iSeeIcon(tester, Icons.play_arrow);
-    });
+    }, tags: ['tag1']);
   });
 }

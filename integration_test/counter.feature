@@ -3,6 +3,8 @@ Feature: Counter Page -
     Given The app is running
     When I login with email {'vicky@test.com'} and password {'000000'}
 
+  @tag1
+  @tag3
   Scenario: Initial text fields are correct
     # Given The app is running
     # the partial text can't be used , we must use the whole text to check whether the widget exists
@@ -11,11 +13,15 @@ Feature: Counter Page -
     Then I see {'0'} text
     Then I see {Icons.add} icon
 
+  @tag1','tag2
+  @tag3
   Scenario: Number could add normally
     Then I tap {Icons.add} icon
     Then I see {'1'} text
     Then I don't see {'0'} text
 
+  @tag2
+  @tag4
   Scenario: Forworad icon work well
     Then I tap {Icons.add} icon
     Then I tap {Icons.arrow_forward} icon

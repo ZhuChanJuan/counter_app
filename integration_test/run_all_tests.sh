@@ -27,4 +27,4 @@ for test_file in $(find . -maxdepth 1 -type f -name "*_test.dart"); do
     flutter drive --driver=integration_test/integration_driver.dart -t integration_test/"$test_file" -d chrome
 done
 
-echo "All tests passed!"
+# echo "All tests passed!"

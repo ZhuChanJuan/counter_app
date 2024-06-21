@@ -1,6 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_import, directives_ordering
 
+@Tags(['integration'])
 import 'package:golden_toolkit/golden_toolkit.dart';
 
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ void main() {
     Future<void> bddSetUp(WidgetTester tester) async {
       await theAppIsRunning(tester);
     }
+
     testWidgets('''Initial text fields are empty''', (tester) async {
       await bddSetUp(tester);
       await iSeeText(tester, 'Welcome Back');
@@ -32,8 +34,9 @@ void main() {
     testGoldens('''The login header is purple''', (tester) async {
       await bddSetUp(tester);
       await theHeaderIsVerified(tester, 'login');
-    });
-    testWidgets('''Login when username and password are in specified format''', (tester) async {
+    }, tags: ['tag3']);
+    testWidgets('''Login when username and password are in specified format''',
+        (tester) async {
       await bddSetUp(tester);
       await iSeeElementWithKey(tester, "LoginUserName");
       await iSeeElementWithKey(tester, "LoginPwd");
@@ -43,6 +46,6 @@ void main() {
       await iSeeEnabledElevatedButton(tester);
       await iTapElementWithKey(tester, "LoginBtn");
       await iSeePageWithTitle(tester, "Flutter Demo Counter Page");
-    });
+    }, tags: ['tag1', 'tag2']);
   });
 }

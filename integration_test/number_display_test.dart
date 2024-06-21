@@ -26,6 +26,6 @@ void main() {
       await iDontSeeText(tester, 'Random Dice Page');
       await iTapIcon(tester, Icons.arrow_forward_ios_rounded);
       await iSeeText(tester, 'Random Dice Page');
-    });
+    }, tags: ['tag1']);
   });
 }

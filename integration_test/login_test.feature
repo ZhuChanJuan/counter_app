@@ -1,9 +1,9 @@
 import 'package:golden_toolkit/golden_toolkit.dart';
 
-
 Feature: Home Screen Validates and then Login
   Background:
     Given The app is running
+  # When I set browser dimension width {437} and height {900}
 
   Scenario: Initial text fields are empty
     # Given The app is running
@@ -11,10 +11,13 @@ Feature: Home Screen Validates and then Login
     Then I see {'Username'} text
     Then I see {'Password'} text
 
+  @tag3
   @testMethodName: testGoldens
   Scenario: The login header is purple
     Then The {'login'} header is verified
 
+  @tag1
+  @tag2
   Scenario: Login when username and password are in specified format
     # Given The app is running
     Then I see element with key {"LoginUserName"}

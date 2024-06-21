@@ -1,0 +1,47 @@
+# This package's tests are very slow. Double the default timeout.
+timeout: 2x
+
+# # This is a browser-only package, so test on chrome by default.
+# platforms: [chrome]
+
+tags:
+  tag1:
+  tag2:
+  tag3:
+  tag4:
+  integration:
+  sanity:
+  smoke:
+    browser:
+    timeout: 2x
+    # Browsers can sometimes randomly time out while starting, especially on
+    # Travis which is pretty slow. Don't retry locally because it makes
+    # debugging more annoying.
+    presets: {travis: {retry: 3}}
+
+  dart2js:
+    add_tags: [browser]
+    timeout: 2x
+
+  firefox:
+    add_tags: [dart2js]
+    test_on: linux
+  chrome: {add_tags: [dart2js]}
+
+
+integration_test:
+  use_cli_tags: true
+  plain_names: true
+
+define_platforms:
+  # This identifier is used to select the platform with the --platform flag.
+  chromium:
+    # A human-friendly name for the platform.
+    name: Chromium
+
+    # The identifier for the platform that this is based on.
+    extends: chrome
+
+    # Settings for the new child platform.
+    settings:
+      executable: chromium

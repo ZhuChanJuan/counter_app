@@ -5,6 +5,7 @@ Feature: Total Number Page -
     When I login with email {'vicky@test.com'} and password {'000000'}
     Then I goto 'TotalNumber' page
 
+  @tag1
   Scenario: Forward icon works well
     # Given The app is running
     Then I don't see {'Random Dice Page'} text
